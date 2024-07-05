@@ -12,11 +12,11 @@ load_dotenv()
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 
-EVAL = list(map(int, getenv("EVAL", "7374966263").split()))
+EVAL = list(map(int, getenv("EVAL", "1841914911 7374966263").split()))
 # ------------------------------------------------------
 BOT_TOKEN = getenv("BOT_TOKEN")
 # -------------------------------------------------------
-OWNER_USERNAME = getenv("OWNER_USERNAME","MRBROKN")
+OWNER_USERNAME = getenv("OWNER_USERNAME","aboutbrokenx")
 # --------------------------------------------------------
 BOT_USERNAME = getenv("BOT_USERNAME" , "MISS_YUMIPRO_BOT")
 # --------------------------------------------------------
