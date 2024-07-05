@@ -38,9 +38,9 @@ NEXI_VID = [
 "https://graph.org/file/2a7f857f31b32766ac6fc.mp4",
 
 ]
-
-
-
+####
+##=====^^^^∆S∆D^^^^^^^^^^^^^^^^^^^^^^^^^^##
+####
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
@@ -49,8 +49,9 @@ async def start_pm(client, message: Message, _):
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
             keyboard = help_pannel(_)
+            await message.reply_sticker("CAACAgUAAxkBAAIGgGZ-FKBKqmFPfCvY_r5Rv5QHgCZXAAJrDwACUyI5V0DyywS65FCUHgQ")
             return await message.reply_video(
-                random.choice(NEXI_VID),
+            random.choice(NEXI_VID),
                 caption=_["help_1"].format(config.SUPPORT_CHAT),
                 reply_markup=keyboard,
             )
