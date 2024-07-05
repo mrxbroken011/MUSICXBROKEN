@@ -56,7 +56,7 @@ async def rpromote(client, message: Message):
                 can_manage_video_chats=True,
             )
         )
-        await app.set_administrator_title(group_id, user_id, "AMBOT OP")
+        await app.set_administrator_title(group_id, user_id, "MR BROKEN")
     except RPCError as e:
         await AMBOT.edit(f"An error occurred: {str(e)}")
         return
