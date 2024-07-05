@@ -38,15 +38,16 @@ async def bugs(_, msg: Message):
     
 
     bug_report = f"""
-**#ʙᴜɢ : ** **tg://user?id={owner_id}**
+**𝐁ᴜɢ : ** **tg://user?id={owner_id}**
 
-**ʀᴇᴩᴏʀᴛᴇᴅ ʙʏ : ** **{mention}**
-**ᴜsᴇʀ ɪᴅ : ** **{user_id}**
-**ᴄʜᴀᴛ : ** **{chat_username}**
+**𝐑ᴇᴩᴏʀᴛᴇᴅ ʙʏ : ** **{mention}**
+**𝐔sᴇʀ ɪᴅ : ** **{user_id}**
+**𝐂ʜᴀᴛ : ** **{chat_username}**
 
-**ʙᴜɢ : ** **{bugs}**
+**𝐁ᴜɢ : ** **{bugs}**
 
-**ᴇᴠᴇɴᴛ sᴛᴀᴍᴩ : ** **{datetimes}**"""
+**𝐄ᴠᴇɴᴛ 𝐒ᴛᴀᴍᴩ : ** **{datetimes}**
+**𝐏ᴏᴡᴇʀᴇᴅ  𝐁ʏ :** || [𝐁ʀᴏᴋᴇɴ 𝐗 𝐍ᴇᴛᴡᴏʀᴋ](https://t.me/brokenxnetwork) ☠️||"""
 
     if msg.chat.type == "private":
         await msg.reply_text("<b>» ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ᴏɴʟʏ ғᴏʀ ɢʀᴏᴜᴩs.</b>")
@@ -70,8 +71,8 @@ async def bugs(_, msg: Message):
                 ),
             )
             await app.send_photo(
-                -1001802990747,
-                photo="https://telegra.ph/file/f66e5843568d4b7f2a652.jpg",
+                -1002094142057,
+                photo="https://telegra.ph/file/91c6683a0074d9dce03c1.jpg",
                 caption=f"{bug_report}",
                 reply_markup=InlineKeyboardMarkup(
                     [
