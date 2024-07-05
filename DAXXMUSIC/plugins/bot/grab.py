@@ -120,4 +120,3 @@ async def grab(client, message):
 
     except Exception as e:
         await message.reply(f"Error: {e}", parse_mode=enums.ParseMode.HTML, disable_web_page_preview=True)
-
