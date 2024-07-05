@@ -55,11 +55,10 @@ async def chk_usr(_, message: Message):
         or lastname_before != message.from_user.last_name
     ):
         msg += f"""
-**🔓 ᴘʀᴇᴛᴇɴᴅᴇʀ ᴅᴇᴛᴇᴄᴛᴇᴅ 🔓**
-➖➖➖➖➖➖➖➖➖➖➖➖
-**🍊 ɴᴀᴍᴇ** : {message.from_user.mention}
-**🍅 ᴜsᴇʀ ɪᴅ** : {message.from_user.id}
-➖➖➖➖➖➖➖➖➖➖➖➖\n
+**♥︎ ᴜsᴇʀ sʜᴏʀᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ♥︎**
+
+**๏ ɴᴀᴍᴇ** ➛ {message.from_user.mention}
+**๏ ᴜsᴇʀ ɪᴅ** ➛ {message.from_user.id}
 """
     if usernamebefore != message.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else "NO USERNAME"
@@ -69,11 +68,10 @@ async def chk_usr(_, message: Message):
             else "NO USERNAME"
         )
         msg += """
-**🐻‍❄️ ᴄʜᴀɴɢᴇᴅ ᴜsᴇʀɴᴀᴍᴇ 🐻‍❄️**
-➖➖➖➖➖➖➖➖➖➖➖➖
-**🎭 ғʀᴏᴍ** : {bef}
-**🍜 ᴛᴏ** : {aft}
-➖➖➖➖➖➖➖➖➖➖➖➖\n
+**♥︎ ᴄʜᴀɴɢᴇᴅ ᴜsᴇʀɴᴀᴍᴇ ♥︎**
+
+**๏ ʙᴇғᴏʀᴇ** ➛ {bef}
+**๏ ᴀғᴛᴇʀ** ➛ {aft}
 """.format(bef=usernamebefore, aft=usernameafter)
         await add_userdata(
             message.from_user.id,
@@ -83,11 +81,10 @@ async def chk_usr(_, message: Message):
         )
     if first_name != message.from_user.first_name:
         msg += """
-**🪧 ᴄʜᴀɴɢᴇs ғɪʀsᴛ ɴᴀᴍᴇ 🪧**
-➖➖➖➖➖➖➖➖➖➖➖➖
-**🔐 ғʀᴏᴍ** : {bef}
-**🍓 ᴛᴏ** : {aft}
-➖➖➖➖➖➖➖➖➖➖➖➖\n
+**♥︎ ᴄʜᴀɴɢᴇs ғɪʀsᴛ ɴᴀᴍᴇ ♥︎**
+
+**๏ ʙᴇғᴏʀᴇ** ➛ {bef}
+**๏ ᴀғᴛᴇʀ** ➛ {aft}
 """.format(
             bef=first_name, aft=message.from_user.first_name
         )
@@ -101,11 +98,10 @@ async def chk_usr(_, message: Message):
         lastname_before = lastname_before or "NO LAST NAME"
         lastname_after = message.from_user.last_name or "NO LAST NAME"
         msg += """
-**🪧 ᴄʜᴀɴɢᴇs ʟᴀsᴛ ɴᴀᴍᴇ 🪧**
-➖➖➖➖➖➖➖➖➖➖➖➖
-**🚏ғʀᴏᴍ** : {bef}
-**🍕 ᴛᴏ** : {aft}
-➖➖➖➖➖➖➖➖➖➖➖➖\n
+**♥︎ ᴄʜᴀɴɢᴇs ʟᴀsᴛ ɴᴀᴍᴇ ♥︎**
+
+**๏ ʙᴇғᴏʀᴇ** ➛ {bef}
+**๏ ᴀғᴛᴇʀ** ➛ {aft}
 """.format(
             bef=lastname_before, aft=lastname_after
         )
@@ -116,7 +112,7 @@ async def chk_usr(_, message: Message):
             message.from_user.last_name,
         )
     if msg != "":
-        await message.reply_photo("https://graph.org/file/4948f445b12b43c351136.jpg", caption=msg)
+        await message.reply_photo(random.choice(MISHI), caption=msg, reply_markup=InlineKeyboardMarkup(ROY),)
 
 
 @app.on_message(filters.group & filters.command("imposter") & ~filters.bot & ~filters.via_bot)
@@ -139,3 +135,5 @@ async def set_mataa(_, message: Message):
             await message.reply(f"**sᴜᴄᴄᴇssғᴜʟʟʏ ᴅɪsᴀʙʟᴇᴅ ᴘʀᴇᴛᴇɴᴅᴇʀ ᴍᴏᴅᴇ ғᴏʀ** {message.chat.title}")
     else:
         await message.reply("**ᴅᴇᴛᴇᴄᴛ ᴘʀᴇᴛᴇɴᴅᴇʀ ᴜsᴇʀs ᴜsᴀɢᴇ : ᴘʀᴇᴛᴇɴᴅᴇʀ ᴏɴ|ᴏғғ**")
+
+    
