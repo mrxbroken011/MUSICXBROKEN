@@ -11,6 +11,7 @@ from DAXXMUSIC.utils.daxx_ban import admin_filter
 
 
 
+
 Yumikoo_text = [
 "hey please don't disturb me.",
 "who are you",    
@@ -28,22 +29,25 @@ Yumikoo_text = [
 strict_txt = [
 "i can't restrict against my besties",
 "are you serious i am not restrict to my friends",
-"fuck you bsdk k mai apne dosto ko kyu kru",
-"hey stupid admin ", 
+"Malik Se Gaddaari Nahi Kar Sakti Malik Maa Ch@d Denge", 
+"Bhakk lawde bsdk k mai apne dosto ko kyu kru",
+"Meri itni Aukaat nahi Tu bhi Aukaat Me Reh Lawde", 
+"hey stupid admin @Mrbrokn Ne hi mujhe banaya hai", 
 "ha ye phele krlo maar lo ek dusre ki gwaand",  
-"i can't hi is my closest friend",
+"i can't he is my closest friend",
+"Pagal Hai Kya Chutiye Malik Maar Dalenge mujhe", 
 "i love him please don't restict this user try to usertand "
 ]
 
 
  
-ban = ["ban","boom"]
-unban = ["unban",]
-mute = ["mute","silent","shut"]
-unmute = ["unmute","speak","free"]
-kick = ["kick", "out","nikaal","nikal"]
-promote = ["promote","adminship"]
-fullpromote = ["fullpromote","fulladmin"]
+ban = ["ban","boom","maa"]
+unban = ["unban","aazad"]
+mute = ["mute","silent","chup"]
+unmute = ["unmute","speak","bolne"]
+kick = ["kick", "out","nikaal","nikal","laat"]
+promote = ["promote","adminship","shabashi"]
+fullpromote = ["fullprote","landlord"]
 demote = ["demote","lelo"]
 group = ["group"]
 channel = ["channel"]
@@ -53,7 +57,7 @@ channel = ["channel"]
 # ========================================= #
 
 
-@app.on_message(filters.command(["exi","exiko"], prefixes=["n", "N"]) & admin_filter)
+@app.on_message(filters.command(["umi","Baby"], prefixes=["y", "Y", ""]) & admin_filter)
 async def restriction_app(app :app, message):
     reply = message.reply_to_message
     chat_id = message.chat.id
@@ -71,13 +75,13 @@ async def restriction_app(app :app, message):
                     await message.reply(random.choice(strict_txt))          
                 else:
                     await app.ban_chat_member(chat_id, user_id)
-                    await message.reply("OK, Ban kar diya madrchod ko sala Chutiya tha !")
+                    await message.reply("**OK 💗Darling, Ban kar diya madrchod ko sala Chutiya tha 😛!**")
                     
         for unbanned in data:
             print(f"present {unbanned}")
             if unbanned in unban:
                 await app.unban_chat_member(chat_id, user_id)
-                await message.reply(f"Ok, aap bolte hai to unban kar diya") 
+                await message.reply(f"**Ok 💗Darling, aap bolte hai to unban kar diya**") 
                 
         for kicked in data:
             print(f"present {kicked}")
@@ -88,7 +92,7 @@ async def restriction_app(app :app, message):
                 else:
                     await app.ban_chat_member(chat_id, user_id)
                     await app.unban_chat_member(chat_id, user_id)
-                    await message.reply("get lost! bhga diya bhosdi wale ko") 
+                    await message.reply("**Ok 💗Darling, Get lost! bhga diya bhosdi wale ko🤭😂**") 
                     
         for muted in data:
             print(f"present {muted}") 
@@ -99,14 +103,14 @@ async def restriction_app(app :app, message):
                 else:
                     permissions = ChatPermissions(can_send_messages=False)
                     await message.chat.restrict_member(user_id, permissions)
-                    await message.reply(f"muted successfully! Disgusting people.") 
+                    await message.reply(f"**Ok 💗Darling, muted successfully! Chup Baith Bhadwe.🤫**") 
                     
         for unmuted in data:
             print(f"present {unmuted}")            
             if unmuted in unmute:
                 permissions = ChatPermissions(can_send_messages=True)
                 await message.chat.restrict_member(user_id, permissions)
-                await message.reply(f"Huh, OK, sir!")   
+                await message.reply(f"**Huh,😡 OK, Bolna Madarchod😂!**")   
 
 
         for promoted in data:
@@ -123,7 +127,7 @@ async def restriction_app(app :app, message):
                     can_manage_video_chats=True,
                        )
                      )
-                await message.reply("promoted !")
+                await message.reply("**Ok! 💗Darling, promoted✨🎉 !**")
 
         for demoted in data:
             print(f"present {demoted}")            
@@ -139,7 +143,7 @@ async def restriction_app(app :app, message):
                     can_manage_video_chats=False,
                        )
                      )
-                await message.reply("demoted !")
+                await message.reply("Ok! 💗 Darling demoted💥 !")
 
 
 #async def your_function():
@@ -157,4 +161,4 @@ async def restriction_app(app :app, message):
                 can_manage_video_chats=True,
                )
              )
-            await message.reply("fullpromoted !")
+            await message.reply("Ok 💗💕Darling fullpromoted 💕💫!")
