@@ -38,7 +38,8 @@ def get_ip_info(ip_address):
                 f"📌 **𝗟ᴏᴄᴀᴛɪᴏɴ** ➪ {data.get('loc', 'N/A')}\n"
                 f"🏢 **𝗢ʀɢᴀɴɪᴢᴀᴛɪᴏɴ** ➪ {data.get('org', 'N/A')}\n"
                 f"📮 **𝗣ᴏsᴛᴀʟ ᴄᴏᴅᴇ** ➪ {data.get('postal', 'N/A')}\n"
-                f"⏰ **𝗧ɪᴍᴇᴢᴏɴᴇ** ➪ {data.get('timezone', 'N/A')}"
+                f"⏰ **𝗧ɪᴍᴇᴢᴏɴᴇ** ➪ {data.get('timezone', 'N/A')}\n"
+                f"[𝐁ʀᴏᴋᴇɴ 𝐗 𝐍ᴇᴛᴡᴏʀᴋ](http://t.me/brokenxnetwork) ☠️"
             )
             return info
     except Exception as e:
